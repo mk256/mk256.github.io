@@ -168,6 +168,7 @@ $(document).ready(function() {
     document.getElementById("checkResult").style.display = "none";
     document.getElementById("inputForm").style.display   = "none";
     document.getElementById("checkResult").style.display = "none";
+    document.getElementById("btnRepeat").style.display   = "block";
 
     if (lMode !== 2)  {
       document.getElementById('translation').innerHTML = "Правильных: " + (lCntTot - lErrors) +
@@ -266,20 +267,34 @@ $(document).ready(function() {
   //отрисовка блоков списка
   let switchToList = function() {
     document.getElementById("btnCheckErrors").style.display = "none";
+    document.getElementById("btnRepeat").style.display      = "none";
     document.getElementById("inputForm").style.display   = "none";
     document.getElementById("checkResult").style.display = "none";
     document.getElementById("translation").style.display = "none";
     document.getElementById("list").style.display        = "block";
     document.getElementById("counters").innerHTML        = "";
+    document.getElementById("btnList").disabled          = true;
+    document.getElementById("btnSolve").disabled         = false;
+    document.getElementById("btnTrainingSolve").disabled = false;
   }
 
   //отрисовка блоков решения
-  let switchToSolve = function() {
+  let switchToSolve = function(isTraining) {
     document.getElementById("btnCheckErrors").style.display = "none";
+    document.getElementById("btnRepeat").style.display      = "none";
     document.getElementById("inputForm").style.display   = "block";
     document.getElementById("checkResult").style.display = "none";
     document.getElementById("translation").style.display = "block";
     document.getElementById("list").style.display        = "none";
+    document.getElementById("btnList").disabled          = false;
+    if (isTraining) {
+      document.getElementById("btnTrainingSolve").disabled = true;
+      document.getElementById("btnSolve").disabled         = false;
+    }
+    else {
+      document.getElementById("btnSolve").disabled         = true;
+      document.getElementById("btnTrainingSolve").disabled = false;
+    }
   }
 
   //Формирование списка слов для заданного уровня (level)
@@ -329,7 +344,7 @@ $(document).ready(function() {
   //Тренировка "до победы"
   let showTraining = function() {
     lMode = 2;
-    switchToSolve();
+    switchToSolve(true);
     wordsInit(lCurLevel);
     redrawCounters();
     putNewWord();
@@ -392,6 +407,8 @@ $(document).ready(function() {
     document.getElementById("btnCheck").onclick          = checkPressed;
     document.getElementById("btnTrainingSolve").onclick  = showTraining;
     document.getElementById("btnCheckErrors").onclick    = checkErrors;
+    document.getElementById("btnRepeat").onclick         = refresh;
+
 
     document.getElementById("btnHelp").onclick           = showHelp;
     document.getElementById("btnCloseHelp").onclick      = closeHelp;
