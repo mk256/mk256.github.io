@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Irregular Verbs</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body class="mbody">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/verbs.js"></script>
+    <script src="js/main.js"></script>
+
+    <div class="hblock">
+      <table class="btnPar">
+        <tr>
+          <td>
+            <input type="button" id="btnList" class="btn" value="Учить список">
+            <input type="button" id="btnSolve" class="btn" value="Проверять">
+            <input type="button" id="btnTrainingSolve" class="btn" value="Решать до победы">
+
+            <select id="levelSelect" class="lSelect">
+              <option value="100">Полный список</option>
+			  <option value="2">Расширенный список</option>
+              <option value="1">Основной список</option>
+              <option value="0">Легкий список</option>
+            </select>
+            <input type="checkbox" id="chkNoEasy">Без предыдущего уровня
+          </td>
+          <td align="right" id="counters">
+          </td>
+          <td align="right">
+            <input type="button" id="btnHelp" class="btnRound" value="?">
+          </td>
+        </tr>
+    </table>
+    </div>
+
+    <div><p>&nbsp;</p></div>
+
+    <div class="main">
+
+      <div id="translation" class="mblock"></div>
+
+      <div class="mblock" id="inputForm">
+        <input type="text" id="verbText" class="vtext" autofocus tabindex="1">
+        <input type="text" id="simpleText" class="vtext" tabindex="2">
+        <input type="text" id="participleText" class="vtext" tabindex="3">
+
+        <input type="button" id="btnCheck" class="btn" value="Проверить" tabindex="4">
+      </div>
+
+      <div class="mblock" id="checkResult"></div>
+
+      <div class="mblock" id="list"></div>
+      <p align="center">
+        <input type="button" id="btnCheckErrors" class="btn" value="Работа над ошибками" tabindex="6">
+      </p>
+      <p align="center">
+        <input type="button" id="btnRepeat" class="btn" value="Пройти заново" tabindex="7">
+      </p>
+
+      <div class="popup" id="helpPopup">
+        <div class="popupContent" id="helpPopupContent">
+          <h3>
+            Изучение неправильных глаголов
+          </h3>
+          <p>
+            <b>Учить список</b> - вывести список глаголов выбранного уровня для их изучения.
+            При щелчке по строке списка можно послушать произношение глагола.
+          </p>
+          <p>
+            <b>Проверять</b> - режим, в котором проверяются все глаголы из текущего списка.
+            После проверки всего списка выдается список ошибок и существует возможность проверить заново те глаголы,
+            в которых были допущены ошибки. Для этого необходимо нажать на кнопку <b>Работа над ошибками</b> в конце списка.
+          </p>
+            <b>Решать до победы</b> - режим, в котором каждый глагол выдается до тех пор, пока не будет дан правильный ответ.
+          </p>
+          <p>
+            <b>Без предыдущего уровня</b> - для просмотра и проверки выдаются только глаголы текущего уровня.
+            Если не установлено, то отображаются все глаголы текущего уровня и всех предыдущих.
+          </p>
+          <p>
+            Обратите внимание, что у глагола может быть два правильных варианта, например: <i>was; were</i>.
+            В этом случае необходимо ввести их через точку с запятой, иначе ответ засчитан не будет.
+          </p>
+          <p>
+            Перемещение между полями для ввода формы глаголов можно осуществлять клавишей Enter.
+            Enter в последнем поле вызывает проверку.
+          </p>
+          <p>
+            Правильность работы и списка слов не гарантируется.
+          </p>
+          <p align="center">
+            <input type="button" id="btnCloseHelp" class="btn" value="Все понятно">
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
