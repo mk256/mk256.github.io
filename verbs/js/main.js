@@ -13,6 +13,7 @@ $(document).ready(function() {
   let lMode = 0; //0 - учить, 1 - решать
   let lCurLevel;
   let lStrict = false;
+  let lSpeechTimeout = null;
 
   const TAB_HEADER = "<th>#</th><th>Translation</th><th>Infinitive</th><th>Past Simple</th><th>Past participle</th>";
 
@@ -106,11 +107,19 @@ $(document).ready(function() {
 
   //Произнести фразу на нужном языке (lang = ru/en)
   let prounonce = function(lang, phrase) {
-    speechSynthesis.cancel();
 
-    let speaker = new SpeechSynthesisUtterance(phrase);
-    speaker.lang = lang;
-    speechSynthesis.speak(speaker);
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+      if (lSpeechTimeout !== null) {
+        clearTimeout(lSpeechTimeout);
+      }
+      lSpeechTimeout = setTimeout(function() { prounonce(lang, phrase); }, 500);
+    }
+    else {
+      let speaker = new SpeechSynthesisUtterance(phrase);
+      speaker.lang = lang;
+      speechSynthesis.speak(speaker);
+    }
   }
 
   //Показать результат ответа
