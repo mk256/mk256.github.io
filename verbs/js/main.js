@@ -108,17 +108,19 @@ $(document).ready(function() {
   //Произнести фразу на нужном языке (lang = ru/en)
   let prounonce = function(lang, phrase) {
 
-    if (speechSynthesis.speaking) {
-      speechSynthesis.cancel();
-      if (lSpeechTimeout !== null) {
-        clearTimeout(lSpeechTimeout);
+    if (window.speechSynthesis != undefined) {
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+        if (lSpeechTimeout !== null) {
+          clearTimeout(lSpeechTimeout);
+        }
+        lSpeechTimeout = setTimeout(function() { prounonce(lang, phrase); }, 500);
       }
-      lSpeechTimeout = setTimeout(function() { prounonce(lang, phrase); }, 500);
-    }
-    else {
-      let speaker = new SpeechSynthesisUtterance(phrase);
-      speaker.lang = lang;
-      speechSynthesis.speak(speaker);
+      else {
+        let speaker = new SpeechSynthesisUtterance(phrase);
+        speaker.lang = lang;
+        speechSynthesis.speak(speaker);
+      }
     }
   }
 
