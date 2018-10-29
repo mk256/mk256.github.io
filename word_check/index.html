@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Words</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body class="mbody">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/verbs.js"></script>
+    <script src="js/main.js"></script>
+
+    <div class="hblock">
+      <table class="btnPar">
+        <tr>
+          <td>
+            <input type="button" id="btnList" class="btn" value="Учить список">
+            <input type="button" id="btnSolve" class="btn" value="Проверять">
+          </td>
+          <td align="right" id="counters">
+          </td>
+        </tr>
+    </table>
+    </div>
+
+    <div><p>&nbsp;</p></div>
+
+    <div class="main">
+
+      <div id="translation" class="mblock"></div>
+
+      <div class="mblock" id="inputForm">
+        <input type="text" id="russian" class="vtext" disabled="true">
+        <input type="text" id="english" class="vtext" autofocus tabindex="1">
+        <input type="button" id="btnCheck" class="btn" value="Проверить" tabindex="2">
+      </div>
+
+      <div class="mblock" id="checkResult"></div>
+
+      <div class="mblock" id="list"></div>
+
+    </div>
+  </body>
+</html>
