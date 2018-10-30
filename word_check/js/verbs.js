@@ -56,7 +56,7 @@ const lVerbs = '[{"english":"world","russian":"мир","part":"noun"},\
 {"english":"priest","russian":"священник","part":"noun"},\
 {"english":"guest","russian":"гость","part":"noun"},\
 {"english":"nervous","russian":"беспокойный","part":"adjective"},\
-{"english":"fightened","russian":"испуганный","part":"adjective"},\
+{"english":"frightened","russian":"испуганный","part":"adjective"},\
 {"english":"strange","russian":"странный","part":"adjective"},\
 {"english":"believe","russian":"верить","part":"verb"},\
 {"english":"go back","russian":"возвращаться","part":"verb"},\
@@ -136,13 +136,13 @@ const lVerbs = '[{"english":"world","russian":"мир","part":"noun"},\
 {"english":"crowded","russian":"многолюдный","part":"adjective"},\
 {"english":"boring","russian":"скучный","part":"adjective"},\
 {"english":"imagine","russian":"представлять","part":"verb"},\
-{"english":"suprisingly","russian":"удивительно","part":"adverb"},\
+{"english":"surprisingly","russian":"удивительно","part":"adverb"},\
 {"english":"dreams","russian":"мечты","part":"noun"},\
 {"english":"weight","russian":"вес","part":"noun"},\
 {"english":"height","russian":"высота","part":"noun"},\
 {"english":"experience","russian":"опыт","part":"noun"},\
 {"english":"adventure","russian":"приключение","part":"noun"},\
-{"english":"chef","russian":"шеф-повор","part":"noun"},\
+{"english":"chef","russian":"шеф-повар","part":"noun"},\
 {"english":"jump","russian":"прыгать","part":"verb"},\
 {"english":"last","russian":"длиться","part":"verb"},\
 {"english":"suddenly","russian":"вдруг","part":"adverb"},\
