@@ -56,3 +56,16 @@
   font-size: 9px;
   color: white;
 }
+.keyLegend {
+  position: absolute;
+  background-color: #909090;
+  border: 1px solid black;
+  width: 12px;
+  top: 0px;
+  height: 12px;
+  color: white;
+  text-align: center;
+  display: table;
+  vertical-align: bottom;
+  font-size: 9px;
+}
