@@ -4,6 +4,7 @@ const STYLE_WHITE_KEY = "whiteKey";
 const STYLE_BLACK_KEY = "blackKey";
 const STYLE_WHITE_KEY_TEXT = "whiteKeyText";
 const STYLE_BLACK_KEY_TEXT = "blackKeyText";
+const STYLE_KEY_LEGEND = "keyLegend";
 const STYLE_BOARD = "board";
 const TAG_DIV = "div";
 const WHITE_KEYS_COUNT = 52;
@@ -23,7 +24,8 @@ class PianoKeyboard {
     this.boardWidth = this.parentElement.getBoundingClientRect().width;
     this.whiteKeyWidth = (this.boardWidth - 20) / WHITE_KEYS_COUNT;
     this.blackKeyWidth = this.whiteKeyWidth / 2;
-    this.whiteKeyHeight = this.parentElement.getBoundingClientRect().height * 0.9;
+    this.whiteKeyHeight = this.parentElement.getBoundingClientRect().height * 0.85;
+    this.keyLegendHeight = (this.parentElement.getBoundingClientRect().height - this.whiteKeyHeight) / 2 - 4;
     this.blackKeyHeight = this.whiteKeyHeight * 0.7;
   }
 
@@ -148,6 +150,22 @@ class PianoKeyboard {
     return key;
   }
 
+  createKeyLegend(positionX, positionY, keyId) {
+    for (const [key, value] of Object.entries(this.keyMap)) {
+      if (value == keyId) {
+        let keyLegend = document.createElement(TAG_DIV);
+        keyLegend.className = "keyLegend";
+        keyLegend.textContent = key.toUpperCase();
+        keyLegend.style.width = this.blackKeyWidth;
+        keyLegend.style.height = this.keyLegendHeight;
+        keyLegend.style.left = positionX;
+        keyLegend.style.top = positionY;
+
+        return keyLegend;
+      }
+    }
+  }
+
   drawKeyboard() {
     this.board = this.createKeyBoard();
     let position = 10;
@@ -168,7 +186,11 @@ class PianoKeyboard {
         case 0 : keyId = 'B' + octave; break;
       }
 
-      this.board.appendChild(this.createWhiteKey(position, top, keyId));
+      this.board.appendChild(this.createWhiteKey(position, top + this.keyLegendHeight + 2, keyId));
+      let legend = this.createKeyLegend(position + this.blackKeyWidth / 2, top + this.whiteKeyHeight + this.keyLegendHeight + 4, keyId);
+      if (legend != null) {
+        this.board.appendChild(legend);
+      }
 
       if (j == -1 || j == 1 || j == 2 || j == 4 || j == 5 || j == 6) {
         switch (j) {
@@ -180,7 +202,11 @@ class PianoKeyboard {
           case  6 : keyId = 'A#' + octave; break;
         }
 
-        this.board.appendChild(this.createBlackKey(position - this.blackKeyWidth / 2, top, keyId));
+        this.board.appendChild(this.createBlackKey(position - this.blackKeyWidth / 2, top + this.keyLegendHeight + 2, keyId));
+        legend = this.createKeyLegend(position - this.blackKeyWidth / 2, top, keyId);
+        if (legend != null) {
+          this.board.appendChild(legend);
+        }
       }
       position += this.whiteKeyWidth;
     }
